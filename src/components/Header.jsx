@@ -83,10 +83,6 @@ export default function Header({
               
               <div className="flex items-center gap-2 text-[11px] text-slate-400">
                 <span className="text-slate-300 font-medium">Team VyomTech</span>
-                <span className="text-slate-600">•</span>
-                <span className="text-purple-400 font-mono">SIH26207</span>
-                <span className="text-slate-600">•</span>
-                <span className="text-cyan-400">Smart Education</span>
               </div>
             </div>
           </div>

@@ -10,7 +10,7 @@ import { computeMathematicalSolution, solveProblem } from './mathSolver.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -141,7 +141,7 @@ const geminiExtractionSchema = {
 };
 
 const SYSTEM_INSTRUCTION = `
-You are the Multimodal Problem Understanding & Parameter Extraction Layer for VisualBoard AI (SIH26207).
+You are the Multimodal Problem Understanding & Parameter Extraction Layer for VisualBoard AI.
 
 CRITICAL ARCHITECTURAL ROLE:
 1. Your job is ONLY to read the question, classify its domain and concept, extract mathematical objects, equations, and numeric values, and specify the exact visualizationType and spoken-voice explanation.

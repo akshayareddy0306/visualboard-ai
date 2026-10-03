@@ -1,5 +1,5 @@
 /**
- * Universal Mathematical Solver for VisualBoard AI (SIH26207)
+ * Universal Mathematical Solver for VisualBoard AI
  * High-precision mathematical computation layer powered by mathjs
  * 
  * ARCHITECTURE (Part 1 - Correctness):
