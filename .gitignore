@@ -6,6 +6,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+**/*.log
 
 # Dependencies
 node_modules/
@@ -21,15 +22,49 @@ node_modules/
 !**/.env.example
 
 # Production builds
-dist
-dist-ssr
+dist/
+dist-ssr/
+**/dist/
 *.local
 
-# Editor directories and files
+# System & OS
+.DS_Store
+Thumbs.db
+
+# Archives and Datasets
+*.rar
+*.zip
+*.tar.gz
+*.7z
+training/data/
+training/__pycache__/
+**/__pycache__/
+*.pyc
+dataset/
+**/dataset/
+data/
+extracted_images/
+training/extracted/
+extracted/
+
+# Python Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+**/venv/
+**/.venv/
+
+# Scratch & temporary test logs
+scratch/
+**/.system_generated/
+
+# Editor directories
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj

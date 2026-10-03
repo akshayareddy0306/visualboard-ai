@@ -29,7 +29,7 @@ export default function StraightLineVisualizer({ data, studentValues }) {
 
   return (
     <div className="relative w-full flex flex-col items-center">
-      <div className="w-full h-[280px] bg-[#060a14] rounded-xl border border-slate-800/90 relative overflow-hidden flex items-center justify-center">
+      <div className="w-full aspect-[16/10] bg-[#060a14] rounded-xl border border-slate-800/90 relative overflow-hidden flex items-center justify-center">
         <svg className="w-full h-full" viewBox={`0 0 ${width} ${height}`}>
           {/* Coordinate axes */}
           <line x1={0} y1={originY} x2={width} y2={originY} stroke="#475569" strokeWidth="1.5" />

@@ -1,48 +1,58 @@
 # VisualBoard AI
 
-An AI-assisted tool that turns typed math questions into live, correct, interactive visualizations — built for Smart India Hackathon 2026 (SIH26207), Smart Education track.
+**Team:** VyomTech  
+**Project:** VisualBoard AI
 
-## What it does
+VisualBoard AI is an intelligent mathematical problem-solving and visualization tool. It accepts both typed math equations and handwritten canvas inputs, uses Gemini AI to understand the question structure, and executes all calculations deterministically using MathJS. It then renders interactive mathematical visualizations (dynamic 2D graphs and 3D geometric solids) with live parameter exploration and voice-assisted step narration.
 
-A teacher or student types a math question in plain language or standard notation. The system:
-1. Uses Gemini AI to understand the question and extract its mathematical structure
-2. Uses MathJS (a real computation engine) to solve it — the AI never computes the final answer itself, only Gemini's language understanding is used, ensuring correctness
-3. Renders a matching diagram (SVG for 2D, Three.js for 3D)
-4. Lets the student explore by adjusting parameters live
-5. Optionally narrates the solution steps aloud via the browser's Web Speech API
+---
 
-## Current Scope & Limitations
+## Tech Stack
 
-**Working reliably:**
-- Single-concept questions across Algebra, Geometry, and Trigonometry
-- Quadratic equations, circles, rectangles, cubes, cuboids, triangles, sine/cosine/tangent graphs
-- Live parameter sliders with real-time visual updates
-- Voice narration of solution steps
+- **Frontend:** React, Vite, Tailwind CSS, Lucide Icons
+- **2D Visualizations:** SVG (dynamic coordinate scaling, 4-quadrant symmetric plotting)
+- **3D Visualizations:** Three.js
+- **Mathematical Computation:** MathJS (symbolic and numerical verification)
+- **AI & NLP:** Google Gemini API (`gemini-3.8-flash`)
+- **Backend:** Node.js, Express, Cors, Dotenv
+- **Voice Narration:** Web Speech API
 
-**Still in progress:**
-- Compound, multi-step JEE problems requiring an intermediate derivation before the main computation
-- 3D vector/line problems needing multi-stage solving
-- Free-form text-based "what if" exploration (currently slider-based only)
+---
 
-**Design principle:** the system is built to explicitly say "not supported yet" when it cannot confidently solve or classify a question, rather than fabricate a plausible-looking but incorrect answer. We treat an honest failure as safer than a confident wrong answer in an education tool.
+## Setup & Running Locally
 
-## Tech stack
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/akshayareddy0306/visualboard-ai.git
+   cd visualboard-ai
+   ```
 
-- **Frontend:** React + Vite
-- **AI understanding:** Google Gemini API (gemini-3.8-flash)
-- **Computation:** MathJS (symbolic/numeric solving)
-- **Visualization:** SVG (2D), Three.js (3D)
-- **Voice:** Browser-native Web Speech API
+2. **Install dependencies:**
+   ```bash
+   npm install
+   cd server && npm install && cd ..
+   ```
 
-## Running locally
+3. **Configure API Keys:**
+   Copy `.env.example` to `server/.env`:
+   ```bash
+   cp .env.example server/.env
+   ```
+   Add your Gemini API key in `server/.env`:
+   ```env
+   PORT=3001
+   GEMINI_API_KEY=your_key_here
+   ```
 
-1. Clone this repository
-2. Run `npm install`
-3. Create a `.env` file in the `server` folder with: `GEMINI_API_KEY=your_key_here`
-4. Start the backend: `cd server && node server.js`
-5. Start the frontend: `npm run dev`
-6. Open `http://localhost:5173`
+4. **Start the backend server:**
+   ```bash
+   cd server
+   node server.js
+   ```
 
-## Team
-
-Team VyomTech — SIH26207
+5. **Start the frontend application:**
+   In a separate terminal:
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:5173` in your browser.

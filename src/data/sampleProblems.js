@@ -29,6 +29,31 @@ export const SAMPLE_PROBLEMS = {
       [ {x: 295, y: 168}, {x: 280, y: 168}, {x: 278, y: 182}, {x: 295, y: 185}, {x: 295, y: 198}, {x: 278, y: 200} ]
     ]
   },
+  quadratic_36: {
+    id: 'quadratic_36',
+    label: 'Test: x² = 36',
+    title: 'x² = 36',
+    queryText: 'x^2 = 36',
+    domain: 'ALGEBRA',
+    category: 'Algebra & Quadratic Equations',
+    concept: 'Quadratic Equation Roots & Parabola',
+    latex: 'x^2 = 36',
+    description: 'Solve x² = 36 and plot the parabola y = x² - 36 showing roots x = ±6 and vertex (0, -36).',
+    handwritingStrokes: [
+      // 'x'
+      [ {x: 120, y: 165}, {x: 145, y: 200} ],
+      [ {x: 145, y: 165}, {x: 120, y: 200} ],
+      // superscript '2'
+      [ {x: 155, y: 155}, {x: 170, y: 148}, {x: 175, y: 158}, {x: 158, y: 170}, {x: 178, y: 170} ],
+      // '='
+      [ {x: 195, y: 178}, {x: 220, y: 178} ],
+      [ {x: 195, y: 188}, {x: 220, y: 188} ],
+      // '3'
+      [ {x: 240, y: 165}, {x: 265, y: 165}, {x: 255, y: 182}, {x: 270, y: 198}, {x: 245, y: 202} ],
+      // '6'
+      [ {x: 300, y: 165}, {x: 285, y: 180}, {x: 285, y: 200}, {x: 305, y: 200}, {x: 305, y: 185}, {x: 285, y: 185} ]
+    ]
+  },
   quadratic: {
     id: 'quadratic',
     label: '1. 3x² - 7x + 2 = 0',

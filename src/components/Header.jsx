@@ -173,7 +173,7 @@ export default function Header({
                   type="password"
                   value={inputKey}
                   onChange={(e) => setInputKey(e.target.value)}
-                  placeholder="Paste your Gemini API key (AIzaSy...)"
+                  placeholder="Paste your Gemini API key..."
                   className="w-full px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl font-mono text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400"
                   required
                 />

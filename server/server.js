@@ -6,6 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI, Type } from '@google/genai';
 import { computeMathematicalSolution, solveProblem } from './mathSolver.js';
+import { solveProblemPipeline } from './solver.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -368,6 +369,43 @@ app.post('/api/analyze', async (req, res) => {
     data: computedResult,
   });
 });
+
+/**
+ * POST /solve and POST /api/solve
+ * Flow:
+ * 1. Clean input (join broken lines, normalize unicode math: ², √, π, ≤)
+ * 2. Call Gemini with strict JSON schema & worked examples
+ * 3. Verify with MathJS (variables, checks, real numeric answer)
+ * 4. Multiple-choice option evaluation & reconciliation
+ * 5. Run twice & compare answers for confidence score
+ * 6. Return { answer, steps, visualization, confidence, verified }
+ * 7. Honest error handling - never fake "Solved" or hardcode answers
+ */
+async function handleSolve(req, res) {
+  const rawInput = req.body?.input || req.body?.question || req.body?.problem || req.body?.content || '';
+  console.log('[VisualBoard AI /solve] Processing math problem:', rawInput.slice(0, 80));
+
+  try {
+    const result = await solveProblemPipeline(rawInput, { apiKey: process.env.GEMINI_API_KEY || apiKey });
+    if (!result.verified && result.error) {
+      return res.status(422).json(result);
+    }
+    return res.json(result);
+  } catch (err) {
+    console.error('[VisualBoard AI /solve] Unexpected error:', err.message);
+    return res.status(500).json({
+      answer: null,
+      steps: [],
+      visualization: null,
+      confidence: 'low',
+      verified: false,
+      error: `Internal server failure during solve pipeline: ${err.message}`,
+    });
+  }
+}
+
+app.post('/solve', handleSolve);
+app.post('/api/solve', handleSolve);
 
 /**
  * POST /api/config-key
